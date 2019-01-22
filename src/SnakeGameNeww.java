@@ -17,6 +17,9 @@ public class SnakeGameNeww extends JFrame {
         snakeHead = new int[] {25, 8};
         tailX = new int[map[0] * map[1]];
         tailY = new int[map[0] * map[1]];
+
+        food[0] = (int) (Math.random() * map[0] + 1);
+        food[1] = (int) (Math.random() * map[1]);
     }
 
     public SnakeGameNeww() {
