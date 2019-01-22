@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class SnakeGameNeww extends JFrame {
 
@@ -16,6 +18,12 @@ public class SnakeGameNeww extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Snake");
         this.setVisible(true);
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                dir = e.getKeyChar();
+            }
+        });
 
     }
 }
