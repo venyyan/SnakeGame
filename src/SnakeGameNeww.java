@@ -12,6 +12,13 @@ public class SnakeGameNeww extends JFrame {
     public static int snakeLength = 0;
     public static boolean gameOver = false;
 
+    public static void main(String[] args) {
+        new SnakeGameNeww();
+        snakeHead = new int[] {25, 8};
+        tailX = new int[map[0] * map[1]];
+        tailY = new int[map[0] * map[1]];
+    }
+
     public SnakeGameNeww() {
 
         this.setSize(250, 150);
