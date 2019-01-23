@@ -20,6 +20,19 @@ public class SnakeGameNeww extends JFrame {
 
         food[0] = (int) (Math.random() * map[0] + 1);
         food[1] = (int) (Math.random() * map[1]);
+
+    }
+
+    public static void movement(char dir) {
+        if (snakeLength > 1) {
+            for (int i = snakeLength - 1; i >= 1; i--) {
+                tailX[i] = tailX[i - 1];
+                tailY[i] = tailY[i - 1];
+            }
+        }
+        tailX[0] = snakeHead[0];
+        tailY[0] = snakeHead[1];
+        
     }
 
     public SnakeGameNeww() {
