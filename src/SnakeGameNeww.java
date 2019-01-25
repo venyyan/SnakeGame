@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 public class SnakeGameNeww extends JFrame {
 
     static char dir = '•';
-    public static int[] map = new int[] {50, 16};
+    public static int[] map = new int[]{50, 16};
     public static int[] tailX, tailY;
     public static int[] snakeHead = new int[2];
     public static int[] food = new int[2];
@@ -14,7 +14,7 @@ public class SnakeGameNeww extends JFrame {
 
     public static void main(String[] args) {
         new SnakeGameNeww();
-        snakeHead = new int[] {25, 8};
+        snakeHead = new int[]{25, 8};
         tailX = new int[map[0] * map[1]];
         tailY = new int[map[0] * map[1]];
 
@@ -34,15 +34,38 @@ public class SnakeGameNeww extends JFrame {
         tailY[0] = snakeHead[1];
 
         switch (dir) {
-            case 'w': snakeHead[1] -= 1;
+            case 'w':
+                snakeHead[1] -= 1;
                 break;
-            case 'a': snakeHead[0] -= 1;
+            case 'a':
+                snakeHead[0] -= 1;
                 break;
-            case 's': snakeHead[1] += 1;
+            case 's':
+                snakeHead[1] += 1;
                 break;
-            case 'd': snakeHead[0] += 1;
+            case 'd':
+                snakeHead[0] += 1;
                 break;
         }
+
+        if (snakeHead[0] == food[0] && snakeHead[1] == food[1]) {
+            eatFood();
+        }
+
+        if (snakeHead[0] > map[0] || snakeHead[0] < 0 || snakeHead[1] > map[1] || snakeHead[1] < 0) {
+            gameOver = true;
+        }
+        for (int i = 0; i < snakeLength; i++) {
+            if ((snakeHead[0] == tailX[i]) && (snakeHead[1] == tailY[i])) {
+                gameOver = true;
+            }
+        }
+    }
+
+    public static void eatFood() {
+        food[0] = (int) (Math.random() * map[0] + 1);
+        food[1] = (int) (Math.random() * map[1]);
+        snakeLength++;
     }
 
     public SnakeGameNeww() {
