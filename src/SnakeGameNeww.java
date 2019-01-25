@@ -32,7 +32,17 @@ public class SnakeGameNeww extends JFrame {
         }
         tailX[0] = snakeHead[0];
         tailY[0] = snakeHead[1];
-        
+
+        switch (dir) {
+            case 'w': snakeHead[1] -= 1;
+                break;
+            case 'a': snakeHead[0] -= 1;
+                break;
+            case 's': snakeHead[1] += 1;
+                break;
+            case 'd': snakeHead[0] += 1;
+                break;
+        }
     }
 
     public SnakeGameNeww() {
