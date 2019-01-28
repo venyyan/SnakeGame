@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 public class SnakeGameNeww extends JFrame {
 
-    static char dir = '•';
+    static char dir = '0';
     public static int[] map = new int[]{50, 16};
     public static int[] tailX, tailY;
     public static int[] snakeHead = new int[2];
@@ -18,9 +18,12 @@ public class SnakeGameNeww extends JFrame {
         tailX = new int[map[0] * map[1]];
         tailY = new int[map[0] * map[1]];
 
+        int random = (int) Math.random();
         food[0] = (int) (Math.random() * map[0] + 1);
         food[1] = (int) (Math.random() * map[1]);
 
+        movement(dir);
+        draw(map, snakeHead, food);
     }
 
     public static void movement(char dir) {
@@ -55,10 +58,22 @@ public class SnakeGameNeww extends JFrame {
         if (snakeHead[0] > map[0] || snakeHead[0] < 0 || snakeHead[1] > map[1] || snakeHead[1] < 0) {
             gameOver = true;
         }
+
         for (int i = 0; i < snakeLength; i++) {
             if ((snakeHead[0] == tailX[i]) && (snakeHead[1] == tailY[i])) {
                 gameOver = true;
             }
+        }
+    }
+
+    public static void draw(int[] map, int[] snakeHead, int[] food) {
+
+        int width = map[0];
+        int height = map[1];
+
+        System.out.println(" ");
+        for (int i = 0; i <= width + 1 ; i++) {
+            System.out.print("#");
         }
     }
 
