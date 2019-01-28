@@ -23,7 +23,7 @@ public class SnakeGameNeww extends JFrame {
         food[1] = (int) (Math.random() * map[1]);
 
         movement(dir);
-        draw(map, snakeHead, food);
+        drawEverything(map, snakeHead, food);
     }
 
     public static void movement(char dir) {
@@ -66,7 +66,7 @@ public class SnakeGameNeww extends JFrame {
         }
     }
 
-    public static void draw(int[] map, int[] snakeHead, int[] food) {
+    public static void drawEverything(int[] map, int[] snakeHead, int[] food) {
 
         int width = map[0];
         int height = map[1];
