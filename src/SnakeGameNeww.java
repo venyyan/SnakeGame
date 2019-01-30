@@ -72,9 +72,23 @@ public class SnakeGameNeww extends JFrame {
         int height = map[1];
 
         System.out.println(" ");
-        for (int i = 0; i <= width + 1 ; i++) {
+        for (int i = 0; i <= width + 1; i++) {
             System.out.print("#");
+
         }
+
+        System.out.println(" ");
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j <= width + 1; j++) {
+                if (j == 0) {
+                    System.out.print("#");
+                } else if (j == width + 1) {
+                    System.out.print("#");
+                }
+            }
+            System.out.println(" ");
+        }
+        
     }
 
     public static void eatFood() {
