@@ -101,8 +101,9 @@ public class SnakeGameNeww extends JFrame {
                     if (isTail == false) {
                         System.out.print(" ");
                     }
-                } 
-
+                } else {
+                    System.out.print(" ");
+                }
             }
             System.out.println(" ");
         }
