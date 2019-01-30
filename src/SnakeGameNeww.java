@@ -84,7 +84,20 @@ public class SnakeGameNeww extends JFrame {
                     System.out.print("#");
                 } else if (j == width + 1) {
                     System.out.print("#");
+                } else if (j == snakeHead[0] && i == snakeHead[1]) {
+                    System.out.print("Q");
+                } else if (j == food[0] && i == food[1]) {
+                    System.out.print("F");
+                } else if (snakeLength > 0) {
+                    
+                    for (int k = 0; k < snakeLength; k++) {
+                        if (j == tailX[k] && i == tailY[k]) {
+                            System.out.print("O");
+                            break;
+                        }
+                    }
                 }
+
             }
             System.out.println(" ");
         }
