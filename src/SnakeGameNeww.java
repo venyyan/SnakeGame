@@ -32,7 +32,7 @@ public class SnakeGameNeww extends JFrame {
         }
     }
 
-    public static void movement(char dir) {
+    public static void moveSnakeTail() {
         if (snakeLength > 1) {
             for (int i = snakeLength - 1; i >= 1; i--) {
                 tailX[i] = tailX[i - 1];
@@ -41,7 +41,9 @@ public class SnakeGameNeww extends JFrame {
         }
         tailX[0] = snakeHead[0];
         tailY[0] = snakeHead[1];
+    }
 
+    public static void moveWithKeys() {
         switch (dir) {
             case 'w':
                 snakeHead[1] -= 1;
@@ -56,7 +58,9 @@ public class SnakeGameNeww extends JFrame {
                 snakeHead[0] += 1;
                 break;
         }
+    }
 
+    public static void createCollision() {
         if (snakeHead[0] == food[0] && snakeHead[1] == food[1]) {
             eatFood();
         }
@@ -72,16 +76,34 @@ public class SnakeGameNeww extends JFrame {
         }
     }
 
-    public static void drawEverything(int[] map, int[] snakeHead, int[] food) {
+    public static void movement(char dir) {
+        moveSnakeTail();
+        moveWithKeys();
+        createCollision();
+    }
 
+    public static void printTheTopBorder() {
         int width = map[0];
-        int height = map[1];
 
         System.out.println(" ");
         for (int i = 0; i <= width + 1; i++) {
             System.out.print("#");
-
         }
+    }
+
+    public static void printTheLowestBorder() {
+        int width = map[0];
+
+        for (int i = 0; i <= width + 1; i++) {
+            System.out.print("#");
+        }
+    }
+
+    public static void drawEverything(int[] map, int[] snakeHead, int[] food) {
+        int width = map[0];
+        int height = map[1];
+
+        printTheTopBorder();
 
         System.out.println(" ");
         for (int i = 0; i < height; i++) {
@@ -113,12 +135,7 @@ public class SnakeGameNeww extends JFrame {
             }
             System.out.println(" ");
         }
-
-        for (int i = 0; i <= width + 1; i++) {
-            System.out.print("#");
-
-        }
-
+        printTheLowestBorder();
     }
 
     public static void eatFood() {
