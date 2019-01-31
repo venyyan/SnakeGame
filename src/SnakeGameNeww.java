@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLOutput;
 
 public class SnakeGameNeww extends JFrame {
 
@@ -12,18 +13,23 @@ public class SnakeGameNeww extends JFrame {
     public static int snakeLength = 0;
     public static boolean gameOver = false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         new SnakeGameNeww();
         snakeHead = new int[]{25, 8};
         tailX = new int[map[0] * map[1]];
         tailY = new int[map[0] * map[1]];
 
-        int random = (int) Math.random();
         food[0] = (int) (Math.random() * map[0] + 1);
         food[1] = (int) (Math.random() * map[1]);
 
-        movement(dir);
-        drawEverything(map, snakeHead, food);
+        while (gameOver == false) {
+            movement(dir);
+            drawEverything(map, snakeHead, food);
+            Thread.sleep(400);
+        }
+        if (gameOver == true) {
+            System.out.println("Game over.");
+        }
     }
 
     public static void movement(char dir) {
