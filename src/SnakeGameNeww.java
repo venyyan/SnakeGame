@@ -5,7 +5,7 @@ import java.sql.SQLOutput;
 
 public class SnakeGameNeww extends JFrame {
 
-    static char dir = '0';
+    static char symbol = '0';
     public static int[] map = new int[]{50, 16};
     public static int[] tailX, tailY;
     public static int[] snakeHead = new int[2];
@@ -24,7 +24,7 @@ public class SnakeGameNeww extends JFrame {
         food[1] = (int) (Math.random() * map[1]);
 
         while (gameOver == false) {
-            movement(dir);
+            movement();
             drawEverything(map, snakeHead, food);
             Thread.sleep(400);
         }
@@ -46,7 +46,7 @@ public class SnakeGameNeww extends JFrame {
     }
 
     public static void moveWithKeys() {
-        switch (dir) {
+        switch (symbol) {
             case 'w':
                 snakeHead[1] -= 1;
                 break;
@@ -65,7 +65,7 @@ public class SnakeGameNeww extends JFrame {
     public static void createCollision() {
         if (snakeHead[0] == food[0] && snakeHead[1] == food[1]) {
             eatFood();
-            score ++;
+            score++;
         }
 
         if (snakeHead[0] > map[0] || snakeHead[0] < 0 || snakeHead[1] > map[1] || snakeHead[1] < 0) {
@@ -79,7 +79,7 @@ public class SnakeGameNeww extends JFrame {
         }
     }
 
-    public static void movement(char dir) {
+    public static void movement() {
         moveSnakeTail();
         moveWithKeys();
         createCollision();
@@ -156,7 +156,7 @@ public class SnakeGameNeww extends JFrame {
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                dir = e.getKeyChar();
+                symbol = e.getKeyChar();
             }
         });
 
