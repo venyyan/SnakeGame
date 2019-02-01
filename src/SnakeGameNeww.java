@@ -12,6 +12,7 @@ public class SnakeGameNeww extends JFrame {
     public static int[] food = new int[2];
     public static int snakeLength = 0;
     public static boolean gameOver = false;
+    public static int score = 0;
 
     public static void main(String[] args) throws InterruptedException {
         new SnakeGameNeww();
@@ -29,6 +30,7 @@ public class SnakeGameNeww extends JFrame {
         }
         if (gameOver == true) {
             System.out.println("Game over.");
+            System.out.println("Your score is: " + score);
         }
     }
 
@@ -63,6 +65,7 @@ public class SnakeGameNeww extends JFrame {
     public static void createCollision() {
         if (snakeHead[0] == food[0] && snakeHead[1] == food[1]) {
             eatFood();
+            score ++;
         }
 
         if (snakeHead[0] > map[0] || snakeHead[0] < 0 || snakeHead[1] > map[1] || snakeHead[1] < 0) {
